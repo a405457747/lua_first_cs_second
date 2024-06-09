@@ -18,7 +18,8 @@ public class GameRoot : MonoBehaviour
         {
             Debug.Log("GameRoot Awake");
             inst = this;
-           // DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
     }
+
 }

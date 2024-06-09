@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using XLua;
 
 
+
 public class LuaMono : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
     public string FilePath;
@@ -42,7 +43,7 @@ public class LuaMono : MonoBehaviour, IPointerClickHandler, IPointerDownHandler,
 
     private void Awake()
     {
-       // Debug.Log("LuaMono Awake");
+        // Debug.Log("LuaMono Awake");
 
         var luaEnv = LuaManager.luaEnv;
 

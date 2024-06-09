@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 
 
+
 public class LuaManager : MonoBehaviour
 {
     public static LuaEnv luaEnv = new LuaEnv();
@@ -28,6 +29,7 @@ public class LuaManager : MonoBehaviour
 
     private byte[] CustomLoader(ref string filepath)
     {
+        
 #if UNITY_EDITOR
 
         if ("emmy_core" == filepath)
@@ -41,9 +43,10 @@ public class LuaManager : MonoBehaviour
         }
 
 #endif
-
+        
 
         filepath = "LuaFiles/" + filepath.Replace('.', '/') + ".lua";
+       // Debug.Log("filePath" + filepath);
         TextAsset file = Resources.Load<TextAsset>(filepath);
         return file.bytes;
     }
