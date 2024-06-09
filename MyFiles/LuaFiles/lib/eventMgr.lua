@@ -4,9 +4,9 @@
 -- Email: 894982165@qq.com
 -- Copyright: © 2023 skyAllen
 
-local event={}
-
 local container = {};
+
+local eventMgr={}
 
 local function addEvent(event_type, callback)
     if container[event_type] == nil then
@@ -43,7 +43,7 @@ local function sendEvent(event_type, ...)
     end
 end
 
-event.addEvent=addEvent;
-event.delEvent=delEvent;
-event.sendEvent=sendEvent;
-return event;
+eventMgr.addEvent=addEvent;
+eventMgr.delEvent=delEvent;
+eventMgr.sendEvent=sendEvent;
+return eventMgr;

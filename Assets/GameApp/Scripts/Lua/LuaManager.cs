@@ -19,6 +19,8 @@ public class LuaManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("LuaManager Awake");
+
         luaEnv.AddLoader(CustomLoader);
 
         luaMain = luaEnv.DoString("return require('Main')", "Main")[0] as LuaTable;

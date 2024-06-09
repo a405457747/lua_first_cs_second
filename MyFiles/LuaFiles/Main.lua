@@ -1,14 +1,24 @@
-
---不推荐有lua的组件，不推荐lua用unity开发方式
 local Main={};
 
+local function test()
+    local a=3;
+    a=a+5;
+    a=a*5;
+    return a;
+end;
+
 local function init()
-    print("Main init",_VERSION)
+    print("Main init lua version ",_VERSION)
+
     require("lib.functions");
-    class=class;
+
     unpack = unpack or table.unpack;
-    if(nil)then
-        package.cpath = package.cpath .. ';C:/Users/skyAllen/.IntelliJIdea2019.3/config/plugins/intellij-emmylua/classes/debugger/emmy/windows/x64/?.dll';
+
+    UnityEngine= CS.UnityEngine;
+
+    dbg=0;
+    if(dbg==1)then
+        package.cpath = package.cpath .. ';C:/Users/justi/.IntelliJIdea2019.3/config/plugins/intellij-emmylua/classes/debugger/emmy/windows/x64/?.dll';
         dbg = require('emmy_core')
         dbg.tcpConnect('localhost', 9966)
     end
@@ -21,18 +31,10 @@ local function init()
             error("write nil value " .. _, 2)
         end
     });
-
-    local py= require("lib.increasePython");local list =py.list;local range =py.range;local enumerate=py.enumerate;
-
-    --[[
-    local tList =list{'a','b','c','d'};
-    for i,item in enumerate(tList) do
-        print(i,item);
-    end
-    --]]
-
-    CS.UnityEngine.SceneManagement.SceneManager.LoadScene("G1");
 end
 
+
+test();
 init();
+
 return Main;

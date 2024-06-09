@@ -74,7 +74,6 @@ local function snakeMatrix(row,col,step)
       col_start=col_start+1;
    end
 
-   --printMatrix(martix);
    return martix;
 end
 

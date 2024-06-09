@@ -6,16 +6,16 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Linq;
 
-
 public class GameRoot : MonoBehaviour
 {
     public static GameRoot Inst { get; private set; } = null;
     private void Awake()
     {
+        Debug.Log("GameRoot Awake");
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+           // DontDestroyOnLoad(this.gameObject);
         }
     }
 }

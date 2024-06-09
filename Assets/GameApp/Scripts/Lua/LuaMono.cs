@@ -42,6 +42,8 @@ public class LuaMono : MonoBehaviour, IPointerClickHandler, IPointerDownHandler,
 
     private void Awake()
     {
+       // Debug.Log("LuaMono Awake");
+
         var luaEnv = LuaManager.luaEnv;
 
         var requirePath = FilePath.Replace('/', '.');
