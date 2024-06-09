@@ -175,14 +175,33 @@ d22:pp();
 
 
 
+---@class gameMgr
+local gameMgr=class("gameMgr");
+
+---@param a gameMgr
+local function add(a)
+    a:ggk()
+end
+
+function gameMgr:ctor(a)
+   --print("ctor",a);
+    ---@UnityEngine.GameObject
+    self.cube=UnityEngine.GameObject.Find("Cube");
+    local k=add("3","2");
+
+end
 
 
 
 
 
 
+---@param a number
+---@param b gameMgr
+---@return gameMgr
+local function add(a,b)
 
-
+end
 
 
 

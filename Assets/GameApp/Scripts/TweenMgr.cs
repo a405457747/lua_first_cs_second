@@ -28,6 +28,7 @@ public class TweenMgr : MonoBehaviour
             func.Invoke(interpolatedValue);
 
             timer += Time.deltaTime;
+
             yield return null;
         }
 
@@ -47,6 +48,7 @@ public class TweenMgr : MonoBehaviour
             func.Invoke(interpolatedValue);
 
             timer += Time.deltaTime;
+
             yield return null;
         }
 
