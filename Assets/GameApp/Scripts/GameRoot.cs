@@ -8,13 +8,16 @@ using System.Linq;
 
 public class GameRoot : MonoBehaviour
 {
-    public static GameRoot Inst { get; private set; } = null;
+    private static GameRoot inst = null;
+
+    public static GameRoot Inst => inst;
+
     private void Awake()
     {
-        Debug.Log("GameRoot Awake");
-        if (Inst == null)
+        if (inst == null)
         {
-            Inst = this;
+            Debug.Log("GameRoot Awake");
+            inst = this;
            // DontDestroyOnLoad(this.gameObject);
         }
     }

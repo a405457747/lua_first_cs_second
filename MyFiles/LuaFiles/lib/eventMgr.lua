@@ -1,12 +1,6 @@
-
--- Author: skyAllen
--- Date: 2023-09-07 15:01:08
--- Email: 894982165@qq.com
--- Copyright: © 2023 skyAllen
+local eventMgr={}
 
 local container = {};
-
-local eventMgr={}
 
 local function addEvent(event_type, callback)
     if container[event_type] == nil then
@@ -46,4 +40,5 @@ end
 eventMgr.addEvent=addEvent;
 eventMgr.delEvent=delEvent;
 eventMgr.sendEvent=sendEvent;
+
 return eventMgr;

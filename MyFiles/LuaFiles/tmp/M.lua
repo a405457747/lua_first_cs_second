@@ -104,4 +104,97 @@ M.printMatrix=printMatrix;
 M.is_tri=is_tri;
 M.tri_area=tri_area;
 M.initMatrix=initMatrix;
+
+
+
+
+
+--[[
+local gameMgr=class("gameMgr");
+
+function gameMgr:start()
+    print("i gam game1 gameMgr");
+    self.k=555;
+    gameMgr.k=333;
+end
+
+local function test(self)
+
+    local a=3;
+    a=a+self.k;
+    a=a*5;
+
+    return a;
+
+end;
+
+function gameMgr:update()
+    dbg.breakHere()
+    test(gameMgr);
+    print("ggk");
+
+end
+
+return gameMgr;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local D2=class("D2");
+
+function D2:ctor(v)
+    self.x=v;
+end
+
+function D2:pp()
+    print(self.x);
+end
+
+function D2:add()
+    self.x=self.x+1;
+end
+
+local d21 =D2.new(5);
+local d22= D2.new(6);
+d22:add(1);
+d21:pp();
+d22:pp();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--]]
+
+
+
+
+
+
 return M;
+

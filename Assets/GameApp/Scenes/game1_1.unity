@@ -430,7 +430,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FilePath: game1/gameMgr
-  Args: []
+  Args:
+  - ArgType: 1
+    ArgValue: 2
   Singleton: 0
 --- !u!1001 &1777180061779478449
 PrefabInstance:
