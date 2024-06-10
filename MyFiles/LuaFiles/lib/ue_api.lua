@@ -95,35 +95,47 @@ ue.transChilds=transChilds;
 
 
 local getComps=function(transParent, compType,containSelf)
-    containSelf=containSelf or true;
+
 
     local childs = transChilds(transParent);
 
-    local res ={transParent:GetComponent(typeof(compType))};
-
-    for i,item in enumerate(childs)do
-        res:append(item:GetComponent(typeof(compType)))
+    local res ={};
+    if(containSelf)then
+        res[#res+1]=transParent:GetComponent(typeof(compType));
     end
 
+    for i, v in ipairs(childs) do
+        res[#res+1]=v;
+    end
     return res;
 end
+ue.getComps=getComps;
 
 --递归这样定义才对哦
 local function findTransRecursion(transParent, targetName)
     local transList = transChilds(transParent)
-    for i, item in enumerate(transList) do
-        if item.name == targetName then
+
+    for i, item in ipairs(transList) do
+        if(item.name==targetName)then
             return item;
         else
-            local result = findTransRecursion(item, targetName);
-            if (result ~= nil) then
-                return result;
+            local res =findTransRecursion(item,targetName);
+            if res ~= nil then
+                return res;
             end
         end
     end
+
     return nil;
 end
-findComp = function(transParent, targetName, compoentName)
+ue.findTransRecursion=findTransRecursion;
+
+local getComp = function(go, comName)--这个应该只支持字符串
+    return go:GetComponent(comName);
+end
+ue.getComp=getComp;
+
+local findCompRecursion = function(transParent, targetName, compoentName)
     --这个方法2D sprite也会用到的
     compoentName = compoentName or "transform";
 
@@ -134,12 +146,15 @@ findComp = function(transParent, targetName, compoentName)
         resTrans = findTransRecursion(transParent, targetName);
     end
 
+    if(resTrans ==nil)then
+        return nil;
+    else
+
+    end
+
     return getComp(resTrans,compoentName);-- resTrans:GetComponent(compoentName);
 end
 
-getComp = function(go, comName)--这个应该只支持字符串
-    return go:GetComponent(comName);
-end
 
 
 
