@@ -53,7 +53,7 @@ public class LuaManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        luaMain.Dispose();
+        luaMain?.Dispose();
     }
 
     private void Update()

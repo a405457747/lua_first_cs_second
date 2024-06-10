@@ -81,7 +81,7 @@ function cs.in_case(val_item)
 end;
 
 local function test()
-    print("hhh");
+    --print(true .. "woaini");
 end
 test();
 return cs;

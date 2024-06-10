@@ -15,6 +15,13 @@ local function init()
         dbg = require('emmy_core')
         dbg.tcpConnect('localhost', 9966)
     end
+    bp_debug=function()
+        if(type(dbg)=="number") then
+            return;
+        end
+
+        dbg.breakHere();
+    end
 
 
     setmetatable(_G, {
@@ -29,7 +36,7 @@ local function init()
     for i, v in pairs(_G) do
         gKeyCount=gKeyCount+1;
     end
-    local targetGKeyCount =62;
+    local targetGKeyCount =63;
     if(gKeyCount==targetGKeyCount)then
         print("GCount Right");
     end
