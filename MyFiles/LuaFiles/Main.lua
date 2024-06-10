@@ -7,7 +7,9 @@ local function init()
 
     unpack = unpack or table.unpack;
 
-    UnityEngine= CS.UnityEngine;
+    ue =require("lib.ue_api");
+
+    cs_coroutine=require("lib.cs_coroutine");
 
     dbg=0;
     if(dbg==1)then
@@ -23,6 +25,10 @@ local function init()
         dbg.breakHere();
     end
 
+    cs=require("lib.cs_api");
+    qa=require("lib.unit_test");
+    evt =require("lib.eventMgr");
+    randomKit =require("lib.randomKit");
 
     setmetatable(_G, {
         __index = function(t, _)
@@ -36,13 +42,14 @@ local function init()
     for i, v in pairs(_G) do
         gKeyCount=gKeyCount+1;
     end
-    local targetGKeyCount =63;
+    print("gCount",gKeyCount);
+    local targetGKeyCount =81;
     if(gKeyCount==targetGKeyCount)then
         print("GCount Right");
     end
 
-    require("lib.cs_api");
-    require("lib.unit_test");
+
+
 end
 
 init();
