@@ -21,7 +21,6 @@ local function init()
         if(type(dbg)=="number") then
             return;
         end
-
         dbg.breakHere();
     end
 
@@ -29,6 +28,7 @@ local function init()
     qa=require("lib.unit_test");
     evt =require("lib.eventMgr");
     randomKit =require("lib.randomKit");
+    G1=nil;
 
     setmetatable(_G, {
         __index = function(t, _)
@@ -42,13 +42,11 @@ local function init()
     for i, v in pairs(_G) do
         gKeyCount=gKeyCount+1;
     end
-    print("gCount",gKeyCount);
-    local targetGKeyCount =81;
+    --print("gCount",gKeyCount);
+    local targetGKeyCount =84;
     if(gKeyCount==targetGKeyCount)then
-        print("GCount Right");
+        print("global Count is right");
     end
-
-
 
 end
 

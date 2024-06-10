@@ -266,6 +266,19 @@ end
 
 
 
+    ---@UnityEngine.GameObject
+    self.cube=UnityEngine.GameObject.Find("Cube");
+    print(self.cube);
+
+    local bkw =ue.findCompRecursion(self.trans,"bkw","Button");
+    print("bkw",bkw);
+
+
+
+
+
+
+
 
 --]]
 

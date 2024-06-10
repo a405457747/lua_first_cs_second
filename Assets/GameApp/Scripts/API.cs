@@ -11,6 +11,9 @@ public class API : MonoBehaviour
 
         a.AddRange(new List<int>() { 2, 3 });
         Debug.Log(a);
+
+        List<string> kk;
+        Debug.Log(transform.name);
     }
 
     // Update is called once per frame

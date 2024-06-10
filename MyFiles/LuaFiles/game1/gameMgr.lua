@@ -2,22 +2,20 @@
 local gameMgr=class("gameMgr");
 
 function gameMgr:ctor(a)
-   --print("ctor",a);
-    ---@UnityEngine.GameObject
-    self.cube=UnityEngine.GameObject.Find("Cube");
-    print(self.cube);
+    G1=self;
 end
 
-function gameMgr:ggk()
-
+function gameMgr:awake()
+    print("G1",G1,self,"awake");
 end
 
-function gameMgr:update()
+function gameMgr:test()
     ---@type UnityEngine.Transform
     local t =self.cube:GetComponent(typeof(UnityEngine.Transform));
     t.localPosition=UnityEngine.Vector3(math.random(1,3),math.random(1,3),0);
+end
 
-    --print(t);
+function gameMgr:update()
 end
 
 return gameMgr;

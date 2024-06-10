@@ -1,7 +1,6 @@
 local ue ={};
 
 UnityEngine= CS.UnityEngine;
-
 GameObject = CS.UnityEngine.GameObject;
 Transform = CS.UnityEngine.Transform;
 RectTransform = CS.UnityEngine.RectTransform;
@@ -14,9 +13,10 @@ Time = CS.UnityEngine.Time;
 Random = CS.UnityEngine.Random;
 Quaternion = CS.UnityEngine.Quaternion;
 Physics2D = CS.UnityEngine.Physics2D;
+Resources = CS.UnityEngine.Resources;
+SceneManager = CS.UnityEngine.SceneManagement.SceneManager;
 --[[
 AudioSource = CS.UnityEngine.AudioSource;
-Resources = CS.UnityEngine.Resources;
 Color = CS.UnityEngine.Color;
 SpriteRenderer = CS.UnityEngine.SpriteRenderer;
 Button = CS.UnityEngine.UI.Button;
@@ -30,7 +30,6 @@ WaitForSeconds = CS.UnityEngine.WaitForSeconds;
 WaitForEndOfFrame = CS.UnityEngine.WaitForEndOfFrame;
 WaitUntil = CS.UnityEngine.WaitUntil;
 Application = CS.UnityEngine.Application;
-SceneManager = CS.UnityEngine.SceneManagement.SceneManager;
 --]]
 
 
@@ -89,11 +88,6 @@ local transChilds = function(transParent)--这个不包括自己的呢，不要�
 end
 ue.transChilds=transChilds;
 
-
-
-
-
-
 local getComps=function(transParent, compType,containSelf)
 
 
@@ -111,8 +105,7 @@ local getComps=function(transParent, compType,containSelf)
 end
 ue.getComps=getComps;
 
---递归这样定义才对哦
-local function findTransRecursion(transParent, targetName)
+local function findTransRecursion(transParent, targetName)--递归这样定义才对哦
     local transList = transChilds(transParent)
 
     for i, item in ipairs(transList) do
@@ -128,18 +121,20 @@ local function findTransRecursion(transParent, targetName)
 
     return nil;
 end
-ue.findTransRecursion=findTransRecursion;
+--ue.findTransRecursion=findTransRecursion;--不要暴露了
 
-local getComp = function(go, comName)--这个应该只支持字符串
+local getComp = function(go, comName)--这个go可以是trnasform，因为都有getcomponent方法
     return go:GetComponent(comName);
 end
 ue.getComp=getComp;
 
 local findCompRecursion = function(transParent, targetName, compoentName)
+    --bp_debug();
     --这个方法2D sprite也会用到的
     compoentName = compoentName or "transform";
 
     local resTrans = nil
+    --transform.name=gameObject.name
     if (transParent.name == targetName) then
         resTrans = transParent;
     else
@@ -149,18 +144,10 @@ local findCompRecursion = function(transParent, targetName, compoentName)
     if(resTrans ==nil)then
         return nil;
     else
-
+        return getComp(resTrans,compoentName);
     end
-
-    return getComp(resTrans,compoentName);-- resTrans:GetComponent(compoentName);
 end
-
-
-
-
-
-
-
+ue.findCompRecursion=findCompRecursion;
 
 
 return ue;
