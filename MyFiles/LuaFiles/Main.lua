@@ -11,7 +11,7 @@ local function init()
 
     cs_coroutine=require("lib.cs_coroutine");
 
-    dbg=0;
+    local dbg=0;
     if(dbg==1)then
         package.cpath = package.cpath .. ';C:/Users/justi/.IntelliJIdea2019.3/config/plugins/intellij-emmylua/classes/debugger/emmy/windows/x64/?.dll'
         dbg = require('emmy_core')
@@ -27,7 +27,7 @@ local function init()
     cs=require("lib.cs_api");
     qa=require("lib.unit_test");
     evt =require("lib.eventMgr");
-    randomKit =require("lib.randomKit");
+    --randomKit =require("lib.randomKit");
     G1=false;
 
     setmetatable(_G, {
@@ -43,7 +43,7 @@ local function init()
         gKeyCount=gKeyCount+1;
     end
     --print("gCount",gKeyCount);
-    local targetGKeyCount =84;
+    local targetGKeyCount =82;
     if(gKeyCount==targetGKeyCount)then
         print("global Count is right");
     end

@@ -80,7 +80,95 @@ function cs.in_case(val_item)
     return val_item;
 end;
 
+function cs.all(t, func)
+    for i, v in ipairs(t) do
+        if func(v) == false then
+            return false;
+        end
+    end
+    return true;
+end
 
+function cs.findAll(arr, fn)
+    local res = {};
+    for i, v in ipairs(arr) do
+        if fn(v) then
+            res[#res + 1] = v;
+        end
+    end
+    return res;
+end
+
+function cs.keys(hash)
+    local res = {};
+    for i, v in pairs(hash) do
+        res[#res + 1] = i;
+    end
+    return res;
+end
+
+function cs.values(hash)
+    local res = {};
+    for i, v in pairs(hash) do
+        res[#res + 1] = v;
+    end
+    return res;
+end
+
+function cs.containsKey(hash, key)
+    return hash[key] ~= nil;
+end
+
+function cs.containsValue(hash, val)
+    local values = cs.values(hash);
+
+    return cs.indexof(values,val)~=0;
+end
+
+function cs.getRange(arr, start, count)
+    local res = {};
+    local endIndex = start + count - 1;
+    for i = start, endIndex do
+        res[#res + 1] = arr[i];
+    end
+    return res;
+end
+
+function cs.insertRange(arr, start, range)
+    cs.reverse(range);
+    for i, v in ipairs(range) do
+        table.insert(arr, start, v);
+    end
+end
+
+function cs.removeRange(arr, start, count)
+    local endIndex = start + count - 1;
+
+    for i = start, endIndex do
+        table.remove(arr, start);
+    end
+end
+
+
+function cs.distinct(arr)
+    local res = {};
+    for i, v in ipairs(arr) do
+        if not cs.contains(res, v) then
+            res[#res + 1] = v;
+        end
+    end
+    return res;
+end
+
+
+function cs.any(arr, fn)
+    for i, v in ipairs(arr) do
+        if fn(v) then
+            return true;
+        end
+    end
+    return false;
+end
 
 local function test()
     --print(true .. "woaini");

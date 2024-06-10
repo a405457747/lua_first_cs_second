@@ -14,7 +14,7 @@ function js.pop(t)
     return res;
 end
 
-function js.at(t,idx)
+function js.at(t,idx)--负索引还没有
     local item =t[idx];
     return item;
 end
@@ -35,6 +35,17 @@ function js.unshift(t,...)
     end
 
     return #t;
+end
+
+function js.reverse(arr)
+    local l = 1;
+    local r = #arr;
+
+    while l < r do
+        arr[l], arr[r] = arr[r], arr[l];
+        l = l + 1;
+        r = r - 1;
+    end
 end
 
 function js.shift(t)
@@ -67,10 +78,6 @@ function js.map(t, func)
     return res;
 end
 
-function js.fill()
-
-end
-
 function js.includes(t,val)
     for i, v in ipairs(t) do
         if(v==val)then
@@ -78,15 +85,6 @@ function js.includes(t,val)
         end
     end
     return false;
-end
-
-function js.some()
-
-end
-
-
-function js.find()
-
 end
 
 function js.filter(t, func)
