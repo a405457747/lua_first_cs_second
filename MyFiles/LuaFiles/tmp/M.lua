@@ -253,8 +253,14 @@ return gameMgr;
 
 
 
-
-
+---方法引用emmylua能找到，不过只能是方法。
+---@param a gameMgr
+function dk(a)
+    a:ggk();
+    ---@type gameMgr
+    local b;
+    b:ggk();
+end
 
 
 

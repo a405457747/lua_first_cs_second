@@ -33,6 +33,8 @@ local function init()
     if(gKeyCount==targetGKeyCount)then
         print("GCount Right");
     end
+
+    require("lib.js_api")
 end
 
 init();

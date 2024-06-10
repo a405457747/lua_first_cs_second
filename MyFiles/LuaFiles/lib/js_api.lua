@@ -100,7 +100,7 @@ function js.filter(t, func)
     return res;
 end
 
-function table.indexOf(t, val)
+function js.indexOf(t, val)
     for i = 1, #t do
         if (t[i] == val) then
             return i;
@@ -108,3 +108,4 @@ function table.indexOf(t, val)
     end
     return 0;
 end
+
