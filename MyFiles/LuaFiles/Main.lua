@@ -34,7 +34,8 @@ local function init()
         print("GCount Right");
     end
 
-    require("lib.cs_api")
+    require("lib.cs_api");
+    require("lib.unit_test");
 end
 
 init();
