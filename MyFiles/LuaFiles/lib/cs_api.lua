@@ -99,6 +99,15 @@ function cs.findAll(arr, fn)
     return res;
 end
 
+function cs.find(arr, fn)
+    for i, v in ipairs(arr) do
+        if fn(v) then
+            return v;
+        end
+    end
+    return nil;
+end
+
 function cs.keys(hash)
     local res = {};
     for i, v in pairs(hash) do
@@ -149,7 +158,6 @@ function cs.removeRange(arr, start, count)
     end
 end
 
-
 function cs.distinct(arr)
     local res = {};
     for i, v in ipairs(arr) do
@@ -159,7 +167,6 @@ function cs.distinct(arr)
     end
     return res;
 end
-
 
 function cs.any(arr, fn)
     for i, v in ipairs(arr) do
