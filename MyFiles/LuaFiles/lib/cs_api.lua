@@ -177,6 +177,14 @@ function cs.any(arr, fn)
     return false;
 end
 
+function cs.select(t, func)
+    local res = {};
+    for i, v in ipairs(t) do
+        res[i] = func(v);
+    end
+    return res;
+end
+
 local function test()
     --print(true .. "woaini");
 end

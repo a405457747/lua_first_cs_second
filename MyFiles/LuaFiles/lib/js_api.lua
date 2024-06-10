@@ -19,14 +19,6 @@ function js.at(t,idx)--负索引还没有
     return item;
 end
 
-function js.form(t)
-    local res={};
-    for i, v in ipairs(t) do
-        res[#res+1]=v;
-    end
-    return res;
-end
-
 function js.unshift(t,...)
     local arg ={...};
 
@@ -78,6 +70,37 @@ function js.map(t, func)
     return res;
 end
 
+function js.splice(array, index, count)
+    -- 存储被删除的元素
+    local removedItems = {}
+
+    -- 从数组中删除元素
+    for i = 1, count do
+        table.insert(removedItems, array[index]) -- 将被删除的元素添加到 removedItems 数组中
+        table.remove(array, index) -- 删除指定位置的
+    end
+
+    -- 返回被删除的元素
+    return removedItems
+end
+
+ function js.slice(array, startIndex, endIndex)
+    -- 如果未提供 endIndex，则设置为数组长度
+    endIndex = endIndex or #array
+
+    -- 存储切片后的元素
+    local slicedItems = {}
+
+    -- 遍历表并复制元素到切片数组中
+    for i = startIndex, endIndex do
+        table.insert(slicedItems, array[i])
+    end
+
+    -- 返回切片后的元素
+    return slicedItems
+end
+
+
 function js.includes(t,val)
     for i, v in ipairs(t) do
         if(v==val)then
@@ -107,3 +130,76 @@ function js.indexOf(t, val)
     return 0;
 end
 
+
+function js.entries(hash)
+
+    local res = {}
+    for i, v in pairs(hash) do
+        local temp = {};
+        table.insert(temp, i);
+        table.insert(temp, v);
+        table.insert(res, temp);
+    end
+    return res;
+
+end
+
+function js.keys(hash)
+    local res = {}
+    for i, v in pairs(hash) do
+        res[#res + 1] = i;
+    end
+    return res;
+end
+
+function js.values(hash)
+
+    local res = {}
+    for i, v in pairs(hash) do
+        res[#res + 1] = v;
+    end
+    return res;
+end
+
+function js.hasOwnProperty(hash, key)
+    for i, v in pairs(hash) do
+        if (i == key) then
+            return true;
+        end
+    end
+    return false;
+end
+
+function js.every(arr, fn)
+    local res = {};
+    for i, v in ipairs(arr) do
+        if fn(v) then
+            res[#res + 1] = v;
+        end
+    end
+    return res;
+end
+
+function js.some(arr, fn)
+    for i, v in ipairs(arr) do
+        if fn(v) then
+            return true;
+        end
+    end
+    return false;
+end
+
+function js.join(arr,flag)
+    flag =flag or"";
+    return table.concat(arr,flag);
+end
+
+local function test()
+    local a={3,4,5,6,7,9};
+    --local b =js.splice(a,2,2);--3679;
+    --print(js.join(a))
+    local a2=js.slice(a,1,#a);
+    print(js.join(a2));
+end
+test();
+return js;

@@ -28,6 +28,7 @@ local function init()
     qa=require("lib.unit_test");
     evt =require("lib.eventMgr");
     --randomKit =require("lib.randomKit");
+    js=require("lib.js_api");
     G1=false;
 
     setmetatable(_G, {
@@ -43,7 +44,7 @@ local function init()
         gKeyCount=gKeyCount+1;
     end
     --print("gCount",gKeyCount);
-    local targetGKeyCount =82;
+    local targetGKeyCount =83;
     if(gKeyCount==targetGKeyCount)then
         print("global Count is right");
     end
