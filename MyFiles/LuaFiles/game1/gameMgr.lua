@@ -6,7 +6,7 @@ function gameMgr:ctor(a)
 end
 
 function gameMgr:awake()
-    print("G1",G1,self,"awake");
+    print("G1",G1,self,"awake",gameMgr);
 end
 
 function gameMgr:test()

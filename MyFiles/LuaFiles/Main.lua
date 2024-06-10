@@ -28,7 +28,7 @@ local function init()
     qa=require("lib.unit_test");
     evt =require("lib.eventMgr");
     randomKit =require("lib.randomKit");
-    G1=nil;
+    G1=false;
 
     setmetatable(_G, {
         __index = function(t, _)
