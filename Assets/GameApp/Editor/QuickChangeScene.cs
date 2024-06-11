@@ -16,14 +16,22 @@ public class QuickChangeScene : EditorWindow
     [MenuItem("Tools/ChangeSceneLogo %t")]
     public static void ChangeSceneLogo()
     {
-        ChangeScene("logo");
-        EditorApplication.ExecuteMenuItem("Edit/Play");
+        if (EditorApplication.isPlaying == true)
+        {
+            ChangeSceneDevelopment();
+        }else
+        {
+
+            ChangeScene("logo");
+            EditorApplication.ExecuteMenuItem("Edit/Play");
+
+        }
     }
 
     [MenuItem("Tools/ChangeSceneDevelopment %g")]
     public static void ChangeSceneDevelopment()
     {
-        EditorApplication.isPlaying = false;
+       EditorApplication.isPlaying = false;//加上不会报错
         StartSceneSwitch();
     }
 
@@ -36,7 +44,7 @@ public class QuickChangeScene : EditorWindow
 
 
     private static bool isDelaying = false;
-    private static float delayDuration = 0.005f; // 延时时间（单位：秒）
+    private static float delayDuration = 0.02f; // 延时时间（单位：秒）延迟一帧以上，不然SaveCurrentModifiedScenesIfUserWantsTo会报错，这个咱真不懂
     private static float startTime;
     private static void StartSceneSwitch()
     {
@@ -46,12 +54,13 @@ public class QuickChangeScene : EditorWindow
     }
     private static void UpdateDelay()
     {
+        //Debug.Log("aaa"); 执行两次问题不大
         float currentTime = (float)EditorApplication.timeSinceStartup;
         float elapsedTime = currentTime - startTime;
 
         if (isDelaying && elapsedTime >= delayDuration)
         {
-            ChangeScene(developeSceneName); // 延时结束后打开新场景
+           ChangeScene(developeSceneName); // 延时结束后打开新场景
 
             isDelaying = false;   // 结束延时
             EditorApplication.update -= UpdateDelay;//allen认为这个结束有点多余，因为没有update自然也不用if判断了，加上update是用了就扔的。

@@ -86,16 +86,15 @@ end
 
  function js.slice(array, startIndex, endIndex)
     -- 如果未提供 endIndex，则设置为数组长度
-    endIndex = endIndex or #array
+    endIndex = endIndex or (#array+1);
 
     -- 存储切片后的元素
     local slicedItems = {}
 
-    -- 遍历表并复制元素到切片数组中
-    for i = startIndex, endIndex do
-        table.insert(slicedItems, array[i])
-    end
-
+     while(startIndex <endIndex) do
+         table.insert(slicedItems, array[startIndex])
+         startIndex=startIndex+1;
+     end
     -- 返回切片后的元素
     return slicedItems
 end
@@ -198,8 +197,11 @@ local function test()
     local a={3,4,5,6,7,9};
     --local b =js.splice(a,2,2);--3679;
     --print(js.join(a))
-    local a2=js.slice(a,1,#a);
-    print(js.join(a2));
+    local a2=js.slice(a,1,1);
+    local a3=js.slice(a,1,2);
+    local a4=js.slice(a,1);
+    --print(js.join(a3),js.join(a4));
+    --print(js.join(a2).."ss");
 end
 test();
 return js;

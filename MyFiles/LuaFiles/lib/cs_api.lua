@@ -185,6 +185,11 @@ function cs.select(t, func)
     return res;
 end
 
+function cs.join(flag,arr)
+    flag =flag or"";
+    return table.concat(arr,flag);
+end
+
 local function test()
     --print(true .. "woaini");
 end

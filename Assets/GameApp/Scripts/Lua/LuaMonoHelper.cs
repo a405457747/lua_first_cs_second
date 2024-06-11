@@ -6,18 +6,6 @@ using XLua;
 
 
 
-public enum ArgTypes
-{
-    Float,
-    Int,
-    Boolean,
-    String,
-    GameObject,
-    LuaTable,
-    LuaFunction
-}
-
-
 
 public class LuaMonoHelper : MonoBehaviour
 {
