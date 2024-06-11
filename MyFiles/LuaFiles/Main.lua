@@ -24,7 +24,7 @@ local function init()
         dbg.breakHere();
     end
 
-    cs=require("lib.cs_api");
+    --cs=require("lib.cs_api");
     qa=require("lib.unit_test");
     evt =require("lib.eventMgr");
     --randomKit =require("lib.randomKit");
@@ -44,7 +44,7 @@ local function init()
         gKeyCount=gKeyCount+1;
     end
     --print("gCount",gKeyCount);
-    local targetGKeyCount =83;
+    local targetGKeyCount =82;
     if(gKeyCount==targetGKeyCount)then
         print("global Count is right");
     end
