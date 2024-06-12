@@ -51,7 +51,7 @@ local function init()
     --print("gCount",gKeyCount);
     local targetGKeyCount =84;
     if(gKeyCount==targetGKeyCount)then
-        print("global Count is right");
+        print("global Count is right!");
     end
 
 end
