@@ -1,7 +1,8 @@
 local Main={};
 
 
-
+--xlua的配置config没改，webplugin改过3个地方https://blog.csdn.net/m0_37775797/article/details/137886279
+--解决包体大小https://juejin.cn/post/7255123444454260795
 local function init()
     print("Main init lua version ",_VERSION)
 
@@ -49,7 +50,7 @@ local function init()
         gKeyCount=gKeyCount+1;
     end
     --print("gCount",gKeyCount);
-    local targetGKeyCount =84;
+    local targetGKeyCount =85;
     if(gKeyCount==targetGKeyCount)then
         print("global Count is right!");
     end

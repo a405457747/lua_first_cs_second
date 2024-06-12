@@ -9,8 +9,8 @@ end
 
 function gameMgr:awake()
     print("G1",G1,self,"awake",gameMgr,ver.ver);
-    local g =GameObject.Find("Canvas/Image/txt"):GetComponent("Text");
-    g.text="hello " .. "中国"
+    local g =GameObject.Find("Canvas/Image/txt"):GetComponent(typeof(Text));
+    g.text="hello " .. "世界"
 end
 
 function gameMgr:generateGo(loadGo, parentTrans, name)

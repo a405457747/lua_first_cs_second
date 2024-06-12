@@ -15,12 +15,12 @@ Quaternion = CS.UnityEngine.Quaternion;
 Physics2D = CS.UnityEngine.Physics2D;
 Resources = CS.UnityEngine.Resources;
 SceneManager = CS.UnityEngine.SceneManagement.SceneManager;
+Text = CS.UnityEngine.UI.Text;
 --[[
 AudioSource = CS.UnityEngine.AudioSource;
 Color = CS.UnityEngine.Color;
 SpriteRenderer = CS.UnityEngine.SpriteRenderer;
 Button = CS.UnityEngine.UI.Button;
-Text = CS.UnityEngine.UI.Text;
 InputField = CS.UnityEngine.UI.InputField;
 Input = CS.UnityEngine.Input;
 Image = CS.UnityEngine.UI.Image;
