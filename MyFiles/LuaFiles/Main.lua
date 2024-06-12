@@ -1,5 +1,7 @@
 local Main={};
 
+
+
 local function init()
     print("Main init lua version ",_VERSION)
 
@@ -29,7 +31,9 @@ local function init()
     evt =require("lib.eventMgr");
     --randomKit =require("lib.randomKit");
     js=require("lib.js_api");
+    _G.Main =Main;
     G1=false;
+    saveData=false;
 
     setmetatable(_G, {
         __index = function(t, _)
@@ -44,12 +48,40 @@ local function init()
         gKeyCount=gKeyCount+1;
     end
     --print("gCount",gKeyCount);
-    local targetGKeyCount =82;
+    local targetGKeyCount =84;
     if(gKeyCount==targetGKeyCount)then
         print("global Count is right");
     end
 
 end
+
+function Main.RootGo()
+    error("RootGo");
+end
+
+function Main.OnBeginDrag(eventData, go)
+    print("OnBeginDrag", go);
+end;
+
+function Main.OnDrag(eventData, go)
+    print("OnDrag", go);
+end;
+
+function Main.OnEndDrag(eventData, go)
+    print("OnEndDrag", go);
+end;
+
+function Main.OnMouseDown(go)
+    print("OnMouseDown", go);
+end;
+
+function Main.OnMouseDrag(go)
+    print("OnMouseDrag", go);
+end;
+
+function Main.OnMouseUp(go)
+    print("OnMouseUp", go);
+end;
 
 init();
 return Main;

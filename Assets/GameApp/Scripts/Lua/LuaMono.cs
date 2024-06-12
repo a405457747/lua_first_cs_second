@@ -12,7 +12,7 @@ using XLua;
 public class LuaMono : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
     public string FilePath;
-    public List<LuaArg> Args;
+    private List<LuaArg> Args=new List<LuaArg>();
     public bool Singleton;
 
 

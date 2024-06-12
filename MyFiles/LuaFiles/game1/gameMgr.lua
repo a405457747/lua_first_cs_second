@@ -1,12 +1,25 @@
 ---@class gameMgr
 local gameMgr=class("gameMgr");
-
+gameMgr.sysList={};
+gameMgr.uiList={};
 function gameMgr:ctor(a)
     G1=self;
 end
 
 function gameMgr:awake()
     print("G1",G1,self,"awake",gameMgr);
+end
+
+function gameMgr:generateGo(loadGo, parentTrans, name)
+    local go = GameObject.Instantiate(loadGo);
+    local canvasTrans = parentTrans;
+    go.transform:SetParent(canvasTrans, false);
+
+    if (name ~= nil) then
+        go.name = name;
+    end
+
+    return go;
 end
 
 function gameMgr:test()
@@ -16,6 +29,14 @@ function gameMgr:test()
 end
 
 function gameMgr:update()
+
+    for i, v in ipairs(self.sysList) do
+        v.update();
+    end
+
+    for i, v in ipairs(self.uiList) do
+        v:update();
+    end
 end
 
 return gameMgr;
