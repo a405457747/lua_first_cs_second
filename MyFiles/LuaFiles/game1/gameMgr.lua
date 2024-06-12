@@ -1,5 +1,6 @@
 ---@class gameMgr
 local gameMgr=class("gameMgr");
+local ver =require("game1.version");
 gameMgr.sysList={};
 gameMgr.uiList={};
 function gameMgr:ctor(a)
@@ -7,7 +8,7 @@ function gameMgr:ctor(a)
 end
 
 function gameMgr:awake()
-    print("G1",G1,self,"awake",gameMgr);
+    print("G1",G1,self,"awake",gameMgr,ver.ver);
 end
 
 function gameMgr:generateGo(loadGo, parentTrans, name)
