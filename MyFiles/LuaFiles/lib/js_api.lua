@@ -193,7 +193,7 @@ function js.join(arr,flag)
     return table.concat(arr,flag);
 end
 
-function string.serialize(obj)
+function js.stringify(obj)
     local lua = ""
     local t = type(obj)
     if t == "number" then
@@ -205,12 +205,12 @@ function string.serialize(obj)
     elseif t == "table" then
         lua = lua .. "{\n"
         for k, v in pairs(obj) do
-            lua = lua .. "[" .. string.serialize(k) .. "]=" .. string.serialize(v) .. ",\n"
+            lua = lua .. "[" .. js.stringify(k) .. "]=" .. js.stringify(v) .. ",\n"
         end
         local metatable = getmetatable(obj)
         if metatable ~= nil and type(metatable.__index) == "table" then
             for k, v in pairs(metatable.__index) do
-                lua = lua .. "[" .. string.serialize(k) .. "]=" .. string.serialize(v) .. ",\n"
+                lua = lua .. "[" .. js.stringify(k) .. "]=" .. js.stringify(v) .. ",\n"
             end
         end
         lua = lua .. "}"
@@ -222,7 +222,7 @@ function string.serialize(obj)
     return lua
 end
 
-function string.unserialize(lua)
+function js.parse(lua)
     local t = type(lua)
     if t == "nil" or lua == "" then
         return nil

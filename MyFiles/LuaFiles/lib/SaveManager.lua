@@ -12,7 +12,7 @@ function SaveManager.Init()
 end
 
 function SaveManager.Save()
-    local data_str = string.serialize(saveData);
+    local data_str = js.stringify(saveData);
     UnityEngine.PlayerPrefs.SetString("player_data", data_str);
 end
 
@@ -32,7 +32,7 @@ function SaveManager.Load()
             testObj = 1;
         }
     else
-        saveData = string.unserialize(data_str);
+        saveData = js.parse(data_str);
     end
 end
 

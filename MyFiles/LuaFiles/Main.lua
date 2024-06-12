@@ -7,6 +7,7 @@ local function init()
 
     require("lib.functions");
 
+    --不支持^和//
     unpack = unpack or table.unpack;
 
     ue =require("lib.ue_api");
